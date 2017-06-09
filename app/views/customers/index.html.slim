@@ -1,0 +1,33 @@
+= link_to new_customer_path, class: 'btn btn-primary float-right'
+  i.fa.fa-plus>
+  | New Customer
+
+h1 Customers
+
+table.table
+  thead
+    tr
+      th Email
+      th Name
+      th Password digest
+      th Phone
+      th Address
+      th Postal code
+      th Birthdate
+      th
+      th
+      th
+
+  tbody
+    - @customers.each do |customer|
+      tr
+        td = customer.email
+        td = customer.name
+        td = customer.password_digest
+        td = customer.phone
+        td = customer.address
+        td = customer.postal_code
+        td = customer.birthdate
+        td = link_to 'Show', customer
+        td = link_to 'Edit', edit_customer_path(customer)
+        td = link_to 'Destroy', customer, data: { confirm: 'Are you sure?' }, method: :delete

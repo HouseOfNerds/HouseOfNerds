@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Email:
+  = @administrator.email
+p
+  strong Name:
+  = @administrator.name
+p
+  strong Password digest:
+  = @administrator.password_digest
+p
+  strong Phone:
+  = @administrator.phone
+p
+  strong Address:
+  = @administrator.address
+p
+  strong Postal code:
+  = @administrator.postal_code
+p
+  strong Birthdate:
+  = @administrator.birthdate
+
+= link_to 'Edit', edit_administrator_path(@administrator)
+'  |
+= link_to 'Back', administrators_path

@@ -1,0 +1,33 @@
+= link_to new_administrator_path, class: 'btn btn-primary float-right'
+  i.fa.fa-plus>
+  | New Administrator
+
+h1 Administrators
+
+table.table
+  thead
+    tr
+      th Email
+      th Name
+      th Password digest
+      th Phone
+      th Address
+      th Postal code
+      th Birthdate
+      th
+      th
+      th
+
+  tbody
+    - @administrators.each do |administrator|
+      tr
+        td = administrator.email
+        td = administrator.name
+        td = administrator.password_digest
+        td = administrator.phone
+        td = administrator.address
+        td = administrator.postal_code
+        td = administrator.birthdate
+        td = link_to 'Show', administrator
+        td = link_to 'Edit', edit_administrator_path(administrator)
+        td = link_to 'Destroy', administrator, data: { confirm: 'Are you sure?' }, method: :delete

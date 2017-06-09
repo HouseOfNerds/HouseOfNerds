@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Email:
+  = @customer.email
+p
+  strong Name:
+  = @customer.name
+p
+  strong Password digest:
+  = @customer.password_digest
+p
+  strong Phone:
+  = @customer.phone
+p
+  strong Address:
+  = @customer.address
+p
+  strong Postal code:
+  = @customer.postal_code
+p
+  strong Birthdate:
+  = @customer.birthdate
+
+= link_to 'Edit', edit_customer_path(@customer)
+'  |
+= link_to 'Back', customers_path
