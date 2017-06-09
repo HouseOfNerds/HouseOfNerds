@@ -7,9 +7,11 @@ require_relative 'config/application'
 
 Rails.application.load_tasks
 
-require 'rubocop/rake_task'
-RuboCop::RakeTask.new
+if Rails.env.test?
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new
 
-namespace :test do
-  task full: ['rubocop:auto_correct', :test]
+  namespace :test do
+    task full: ['rubocop:auto_correct', :test]
+  end
 end
