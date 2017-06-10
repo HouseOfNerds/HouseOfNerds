@@ -32,8 +32,8 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   ActionMailer::Base.smtp_settings = {
-      :user_name => 'apikey',
-      :password => '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',
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
       :domain => 'houseofnerds.no',
       :address => 'smtp.sendgrid.net',
       :port => 587,
