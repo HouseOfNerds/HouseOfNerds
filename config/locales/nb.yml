@@ -1,0 +1,8 @@
+nb:
+  attributes:
+    address: Adresse
+    birthdate: Fødselsdato
+    email: E-post
+    name: Navn
+    phone: Telefon
+    postal_code: Postnummer

@@ -1,8 +1,14 @@
 = bootstrap_form_for @customer do |f|
-  = f.text_field :email
-  = f.text_field :name
-  = f.text_field :phone
-  = f.text_field :address
-  = f.text_field :postal_code
-  = f.text_field :birthdate, class: :date
+  .row
+    .col-md-6
+      = f.text_field :email
+      = f.text_field :name
+      = f.text_field :phone
+      = f.text_field :address
+      = f.text_field :postal_code
+      = f.text_field :birthdate, class: :date
+    .col-md-6
+      - if @customer.image_content
+        img.mb-3.col-12 src=image_customer_path(@customer)
+      = f.file_field :image, accept: 'image/*', capture: 'camera'
   .float-right = f.primary 'Lagre'

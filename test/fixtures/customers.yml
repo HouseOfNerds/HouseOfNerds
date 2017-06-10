@@ -1,7 +1,6 @@
 one:
   email: MyString
   name: MyString
-  password_digest: MyString
   phone: MyString
   address: MyString
   postal_code: MyString
@@ -10,7 +9,6 @@ one:
 two:
   email: MyString
   name: MyString
-  password_digest: MyString
   phone: MyString
   address: MyString
   postal_code: MyString

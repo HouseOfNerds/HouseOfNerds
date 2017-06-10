@@ -24,6 +24,7 @@ gem 'momentjs-rails'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rails-assets-tether'
+gem 'rails-i18n'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails'
 gem 'therubyracer', platforms: :ruby

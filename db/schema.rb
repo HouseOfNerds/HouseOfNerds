@@ -35,11 +35,12 @@ ActiveRecord::Schema.define(version: 20170609220551) do
   create_table 'customers', force: :cascade do |t|
     t.string 'email', null: false
     t.string 'name'
-    t.string 'password_digest'
     t.string 'phone'
     t.string 'address'
     t.string 'postal_code'
     t.date 'birthdate'
+    t.binary 'image_content'
+    t.binary 'image_content_type'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CustomersController < ApplicationController
-  before_action :set_customer, only: %i[show edit update destroy]
+  before_action :set_customer, only: %i[show edit image update destroy]
 
   def index
     @customers = Customer.all
@@ -9,6 +9,12 @@ class CustomersController < ApplicationController
 
   def show
     edit
+  end
+
+  def image
+    content = @customer.image_content
+    content_type = @customer.image_content_type
+    send_data content, filename: @customer.email.to_s, type: content_type, disposition: 'inline'
   end
 
   def new
@@ -37,14 +43,9 @@ class CustomersController < ApplicationController
     end
   end
 
-  # DELETE /customers/1
-  # DELETE /customers/1.json
   def destroy
     @customer.destroy
-    respond_to do |format|
-      format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to customers_url, notice: 'Customer was successfully destroyed.'
   end
 
   private
@@ -56,6 +57,6 @@ class CustomersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def customer_params
-    params.require(:customer).permit(:email, :name, :password_digest, :phone, :address, :postal_code, :birthdate)
+    params.require(:customer).permit(:address, :birthdate, :email, :image, :name, :phone, :postal_code)
   end
 end
