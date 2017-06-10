@@ -17,6 +17,7 @@ class LoginController < ApplicationController
     return unless (email = redirect_if_no_email)
     return if redirect_if_not_hon(email)
     return unless (@user = redirect_if_no_administrator(email))
+    return if redirect_if_recently_sent(@user)
 
     @user.generate_security_token
 
@@ -35,6 +36,12 @@ class LoginController < ApplicationController
   def redirect_if_not_hon(email)
     return if email.match?(Administrator::HON_EMAIL_PATTERN)
     redirect_to :login, notice: 'Innlogging via web er foreløpig ikke tilgengelig.'
+    true
+  end
+
+  def redirect_if_recently_sent(user)
+    return if user.security_token_stored_at <= 10.minutes.ago
+    redirect_to :login, notice: 'En e-post ble sent for mindre enn 10 minutter side.  Vent litt før du prøver igjen.'
     true
   end
 
