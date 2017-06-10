@@ -4,7 +4,8 @@ require 'test_helper'
 
 class AdministratorsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @administrator = administrators(:one)
+    login
+    @administrator = administrators(:vegard)
   end
 
   test 'should get index' do
@@ -19,10 +20,10 @@ class AdministratorsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create administrator' do
     assert_difference('Administrator.count') do
-      post administrators_url, params: { administrator: { address: @administrator.address, birthdate: @administrator.birthdate, email: @administrator.email, name: @administrator.name, password_digest: @administrator.password_digest, phone: @administrator.phone, postal_code: @administrator.postal_code } }
+      post administrators_url, params: { administrator: { address: @administrator.address, birthdate: @administrator.birthdate, email: @administrator.email, name: @administrator.name, phone: @administrator.phone, postal_code: @administrator.postal_code } }
     end
 
-    assert_redirected_to administrator_url(Administrator.last)
+    assert_redirected_to administrators_url
   end
 
   test 'should show administrator' do
@@ -36,8 +37,8 @@ class AdministratorsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should update administrator' do
-    patch administrator_url(@administrator), params: { administrator: { address: @administrator.address, birthdate: @administrator.birthdate, email: @administrator.email, name: @administrator.name, password_digest: @administrator.password_digest, phone: @administrator.phone, postal_code: @administrator.postal_code } }
-    assert_redirected_to administrator_url(@administrator)
+    patch administrator_url(@administrator), params: { administrator: { address: @administrator.address, birthdate: @administrator.birthdate, email: @administrator.email, name: @administrator.name, phone: @administrator.phone, postal_code: @administrator.postal_code } }
+    assert_redirected_to administrators_url
   end
 
   test 'should destroy administrator' do

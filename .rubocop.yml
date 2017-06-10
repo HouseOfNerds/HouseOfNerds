@@ -58,6 +58,10 @@ Metrics/LineLength:
   Exclude:
     - db/schema.rb
 
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/*
+
 Rails:
   Enabled: true
 

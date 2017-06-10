@@ -3,10 +3,12 @@
 class CreateAdministrators < ActiveRecord::Migration[5.1]
   def change
     create_table :administrators do |t|
-      t.string :email, null: false
+      t.string :email, null: false, index: :unique
       t.string :name
-      t.string :password_digest, null: false
-      t.string :phone
+      t.string :security_token
+      t.datetime :security_token_stored_at
+      t.datetime :inactivated_at
+      t.string :phone, index: :unique
       t.string :address
       t.string :postal_code
       t.date :birthdate

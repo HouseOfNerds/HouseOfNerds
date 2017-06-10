@@ -1,18 +1,16 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  email: MyString
-  name: MyString
-  password_digest: MyString
+vegard:
+  email: vegard@example.com
+  name: Vegard Hvem Skjefstad
+  security_token: secret
+  security_token_stored_at: 2017-06-10 13:37:42
   phone: MyString
   address: MyString
   postal_code: MyString
   birthdate: 2017-06-10
 
-two:
-  email: MyString
-  name: MyString
-  password_digest: MyString
+henrik:
+  email: henrik@example.com
+  name: Henrik Møllegård
   phone: MyString
   address: MyString
   postal_code: MyString

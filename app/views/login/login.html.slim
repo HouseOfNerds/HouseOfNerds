@@ -1,0 +1,11 @@
+.row
+  .col-md-10.offset-md-1.col-lg-8.offset-lg-2.col-xl-6.offset-xl-3
+    h1.mb-4 Pålogging
+
+    = bootstrap_form_tag do |f|
+      = f.text_field :email, hide_label: true, placeholder: 'Skriv inn din e-post for å motta en lenke for pålogging'
+      .btn-toolbar.float-right
+        = f.primary 'Send e-post'
+
+    javascript:
+      $('#email').focus();

@@ -3,51 +3,37 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: %i[show edit update destroy]
 
-  # GET /customers
-  # GET /customers.json
   def index
     @customers = Customer.all
   end
 
-  # GET /customers/1
-  # GET /customers/1.json
-  def show; end
+  def show
+    edit
+  end
 
-  # GET /customers/new
   def new
     @customer = Customer.new
   end
 
-  # GET /customers/1/edit
-  def edit; end
+  def edit
+    render :edit
+  end
 
-  # POST /customers
-  # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
 
-    respond_to do |format|
-      if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render :show, status: :created, location: @customer }
-      else
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+    if @customer.save
+      redirect_to @customer, notice: 'Customer was successfully created.'
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /customers/1
-  # PATCH/PUT /customers/1.json
   def update
-    respond_to do |format|
-      if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @customer }
-      else
-        format.html { render :edit }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+    if @customer.update(customer_params)
+      redirect_to customers_path, notice: 'Customer was successfully updated.'
+    else
+      render :edit
     end
   end
 

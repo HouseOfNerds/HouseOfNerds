@@ -1,31 +1,41 @@
 = link_to new_administrator_path, class: 'btn btn-primary float-right'
   i.fa.fa-plus>
-  | New Administrator
+  | Ny administrator
 
-h1 Administrators
+h1 Administratorer
 
-table.table
-  thead
-    tr
-      th Email
-      th Name
-      th Phone
-      th Address
-      th Postal code
-      th Birthdate
-      th
-      th
-      th
-
-  tbody
-    - @administrators.each do |administrator|
+.table-responsive
+  table#administrators.table.table-striped.table-hover
+    thead
       tr
-        td = administrator.email
-        td = administrator.name
-        td = administrator.phone
-        td = administrator.address
-        td = administrator.postal_code
-        td = administrator.birthdate
-        td = link_to 'Show', administrator
-        td = link_to 'Edit', edit_administrator_path(administrator)
-        td = link_to 'Destroy', administrator, data: { confirm: 'Are you sure?' }, method: :delete
+        th E-post
+        th Navn
+        th Telefon
+        th Adresse
+        th Postnummer
+        th Fødselsdato
+        th
+        th
+        th
+
+    tbody
+      - @administrators.each do |administrator|
+        tr data-record-id=administrator.id
+          td = administrator.email
+          td = administrator.name
+          td = administrator.phone
+          td = administrator.address
+          td = administrator.postal_code
+          td = administrator.birthdate
+          td = link_to 'Show', administrator
+          td = link_to 'Edit', edit_administrator_path(administrator)
+          td = link_to 'Destroy', administrator, data: { confirm: 'Are you sure?' }, method: :delete
+
+javascript:
+    $('#administrators tbody tr').css('cursor', 'pointer').on("click", function (e) {
+        if ($(e.target).closest("a").length > 0) {
+            return true;
+        }
+        const record_id = $(this).attr('data-record-id');
+        window.location = '/administrators/' + record_id;
+    });

@@ -15,13 +15,21 @@ html lang="en"
           span.navbar-toggler-icon
         a.navbar-brand href=root_path
           img src=image_path('theme_amsterdam_HoN-logo-horizontal-01-blue.png')
-        #navbarSupportedContent.collapse.navbar-collapse
-          ul.navbar-nav.mr-auto
-            li.nav-item.active: a.nav-link href=root_path Home
-            li.nav-item: a.nav-link href=customers_path Customers
-            li.nav-item: a.nav-link href=administrators_path Administrators
-          form.form-inline.my-2.my-lg-0
-            input.form-control.mr-sm-2 type="text" placeholder="Search"
-            button.btn.btn-outline-success.my-2.my-sm-0 type="submit" Search
+        - if current_user
+          #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+              li.nav-item.active: a.nav-link href=root_path Startside
+              li.nav-item: a.nav-link href=customers_path Kunder
+              li.nav-item: a.nav-link href=administrators_path Administratorer
+            form.form-inline.my-2.my-lg-0 action=search_path
+              input.form-control.mr-sm-2 name='q' type="text" placeholder="Søk"
+              button.btn.btn-outline-success.my-2.my-sm-0 type="submit" Søk
+            ul.navbar-nav
+              li.nav-item: a.nav-link href=logout_path Logg av
+      - if alert
+        #alert.alert.alert-warning == alert
+
+      - if notice
+        #notice.alert.alert-info == notice
 
       = yield

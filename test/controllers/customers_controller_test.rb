@@ -4,6 +4,7 @@ require 'test_helper'
 
 class CustomersControllerTest < ActionDispatch::IntegrationTest
   setup do
+    login
     @customer = customers(:one)
   end
 
@@ -37,7 +38,7 @@ class CustomersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should update customer' do
     patch customer_url(@customer), params: { customer: { address: @customer.address, birthdate: @customer.birthdate, email: @customer.email, name: @customer.name, password_digest: @customer.password_digest, phone: @customer.phone, postal_code: @customer.postal_code } }
-    assert_redirected_to customer_url(@customer)
+    assert_redirected_to customers_url
   end
 
   test 'should destroy customer' do

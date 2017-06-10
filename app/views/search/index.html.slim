@@ -1,0 +1,10 @@
+h1 Søk på #{@query.inspect}
+
+ul.nav.nav-tabs role="tablist"
+  - if @customers.present?
+    li.nav-item
+      a.nav-link.active data-toggle="tab" href="#customers" role="tab" Kunder
+
+.tab-content
+  - if @customers.present?
+    #customers.tab-pane.fade.show.active role="tabpanel" = render 'customers/list', customers: @customers
