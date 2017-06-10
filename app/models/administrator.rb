@@ -4,7 +4,7 @@ class Administrator < ApplicationRecord
   HON_EMAIL_PATTERN = {
       development: //,
       test: /^(vegard|henrik|uwe)@example.com$/,
-  }[Rails.env.to_sym] || /@houseofnerds.no$/
+  }[Rails.env.to_sym] || /^uwe@kubosch.no$|@houseofnerds.no$/
 
   before_validation { self.email = email.downcase if email_changed? }
 
