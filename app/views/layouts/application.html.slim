@@ -29,9 +29,15 @@ html lang="en"
             ul.navbar-nav
               li.nav-item: a.nav-link.pr-1 href=logout_path Logg av
       - if alert
-        #alert.alert.alert-warning == alert
+        #alert.alert.alert-warning.alert-dismissible.fade.show role="alert"
+          button.close type="button" data-dismiss="alert" aria-label="Close"
+            span aria-hidden="true" &times;
+          == alert
 
       - if notice
-        #notice.alert.alert-info == notice
+        #notice.alert.alert-info.alert-dismissible.fade.show role="alert"
+          button.close type="button" data-dismiss="alert" aria-label="Close"
+            span aria-hidden="true" &times;
+          == notice
 
       = yield

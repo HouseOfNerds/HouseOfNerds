@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   resources :administrators
   resources :asset_types
   resources :customers do
-    member { get :image }
+    member do
+      get :image
+      post :save_image
+    end
   end
   resources :loans do
     member { get :return }

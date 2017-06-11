@@ -1,6 +1,7 @@
 nb:
   attributes:
     address: Adresse
+    asset_type: Utstyrstype
     asset_type_id: Utstyrstype
     birthdate: Fødselsdato
     customer_id: Kunde

@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20170610222040) do
     t.string 'image_content_type', limit: 64
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.index ['email'], name: 'index_customers_on_email'
+    t.index ['phone'], name: 'index_customers_on_phone'
   end
 
   create_table 'loans', force: :cascade do |t|

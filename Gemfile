@@ -49,6 +49,7 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'
   gem 'simplecov', require: false
+  gem 'timecop'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

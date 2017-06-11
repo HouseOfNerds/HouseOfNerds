@@ -1,15 +1,15 @@
 one:
-  email: MyString
+  email: one@example.com
   name: MyString
-  phone: MyString
+  phone: 11111111
   address: MyString
   postal_code: MyString
   birthdate: 2017-06-10
 
 two:
-  email: MyString
+  email: two@example.com
   name: MyString
-  phone: MyString
+  phone: 22222222
   address: MyString
   postal_code: MyString
   birthdate: 2017-06-10

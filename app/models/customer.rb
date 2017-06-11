@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
 
   before_validation { self.email = email.downcase.strip if email_changed? }
 
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
 
   def image=(file)
     # self.filename = file.original_filename

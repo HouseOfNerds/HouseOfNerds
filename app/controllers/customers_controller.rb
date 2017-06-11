@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CustomersController < ApplicationController
-  before_action :set_customer, only: %i[show edit image update destroy]
+  before_action :set_customer, only: %i[show edit image save_image update destroy]
 
   def index
     @customers = Customer.order(:email).all
@@ -15,6 +15,14 @@ class CustomersController < ApplicationController
     content = @customer.image_content
     content_type = @customer.image_content_type
     send_data content, filename: @customer.email.to_s, type: content_type, disposition: 'inline'
+  end
+
+  def save_image
+    params.require(:imgBase64) =~ /^data:([^;]+);base64,(.*)$/
+    content = Base64.decode64($2)
+    content_type = $1
+    @customer.update! image_content: content, image_content_type: content_type
+    render plain: content.hash
   end
 
   def new

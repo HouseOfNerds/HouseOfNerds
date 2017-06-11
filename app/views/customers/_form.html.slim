@@ -1,45 +1,8 @@
 = bootstrap_form_for @customer do |f|
-  .row
-    .col-md-6
-      = f.text_field :email
-      = f.text_field :name
-      = f.text_field :phone
-      = f.text_field :address
-      = f.text_field :postal_code
-      = f.text_field :birthdate, class: :date
-    .col-md-6
-      - if @customer.persisted? && @customer.image_content
-        img.mb-3.col-12 src=image_customer_path(@customer)
-      = f.file_field :image, accept: 'image/*', capture: 'camera'
-
-
-
-      canvas id="canvas" width="160" height="120"
-      video id="video" width="160" height="120" autoplay='autoplay'
-      button id="snap" type="button" Snap Photo
-
-      javascript:
-          // Grab elements, create settings, etc.
-          var video = document.getElementById('video');
-
-          // Get access to the camera!
-          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-              // Not adding `{ audio: true }` since we only want video now
-              navigator.mediaDevices.getUserMedia({video: true}).then(function (stream) {
-                  video.src = window.URL.createObjectURL(stream);
-                  video.play();
-              });
-          }
-
-          // Elements for taking the snapshot
-          var canvas = document.getElementById('canvas');
-          var context = canvas.getContext('2d');
-          var video = document.getElementById('video');
-
-          // Trigger photo take
-          document.getElementById("snap").addEventListener("click", function () {
-              context.drawImage(video, 0, 0, 160, 120);
-          });
-
-
+  = f.text_field :email
+  = f.text_field :name
+  = f.text_field :phone
+  = f.text_field :address
+  = f.text_field :postal_code
+  = f.text_field :birthdate, class: :date
   .float-right = f.primary 'Lagre'

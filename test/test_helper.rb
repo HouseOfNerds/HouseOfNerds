@@ -10,6 +10,8 @@ require 'rails/test_help'
 
 Minitest::Reporters.use!
 
+Timecop.freeze(2017, 6, 11, 13, 37, 42)
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
