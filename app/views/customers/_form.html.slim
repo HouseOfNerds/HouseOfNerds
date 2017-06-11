@@ -8,7 +8,7 @@
       = f.text_field :postal_code
       = f.text_field :birthdate, class: :date
     .col-md-6
-      - if @customer.image_content
+      - if @customer.persisted? && @customer.image_content
         img.mb-3.col-12 src=image_customer_path(@customer)
       = f.file_field :image, accept: 'image/*', capture: 'camera'
 
