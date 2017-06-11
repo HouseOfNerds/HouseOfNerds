@@ -40,7 +40,7 @@ class LoginController < ApplicationController
   end
 
   def redirect_if_recently_sent(user)
-    return if user.security_token_stored_at <= 10.minutes.ago
+    return if user.security_token_stored_at.nil? || user.security_token_stored_at <= 10.minutes.ago
     redirect_to :login, notice: 'En e-post ble sent for mindre enn 10 minutter side.  Vent litt før du prøver igjen.'
     true
   end
