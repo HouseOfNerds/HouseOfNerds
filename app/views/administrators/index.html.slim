@@ -25,7 +25,9 @@ h1 Administratorer
           td = administrator.address
           td = administrator.postal_code
           td = administrator.birthdate
-          td = link_to 'Destroy', administrator, data: { confirm: 'Are you sure?' }, method: :delete
+          td = link_to administrator, data: { confirm: 'Are you sure?' }, method: :delete
+            i.fa.fa-trash>
+            | Slett
 
 javascript:
     $('#administrators tbody tr').css('cursor', 'pointer').on("click", function (e) {
