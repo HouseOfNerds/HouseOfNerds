@@ -2,6 +2,10 @@
   .col-md-6
     h1 Kunde #{@customer.email}
     h2 = @customer.name
+
+    - if @customer.persisted? && @customer.image_content
+      img.mb-3.col-12 src=image_customer_path(@customer)
+
     table.table
       tr
         th Telefon
@@ -36,5 +40,4 @@
 
     = bootstrap_form_for :loan, url: loans_path do |f|
       = f.hidden_field :customer_id, value: @customer.id
-      = f.collection_select :asset_type_id, @asset_types, :id, :name, prompt: 'Velg utstyrstype'
-      .float-right = f.primary 'Lagre'
+      = f.select :asset_type_id, @asset_types.map{|at| [at.name, at.id]}, prompt: 'Velg utstyrstype', append: f.primary('Legg til')

@@ -18,6 +18,9 @@
           td = loan.created_at.localtime.strftime('%F %R')
           - if show_returned_column
             td = loan.returned_at&.localtime&.strftime('%F %R')
-          td.text-right = link_to 'Destroy', loan, data: { confirm: 'Are you sure?' }, method: :delete
+          td.text-right
+            = link_to loan, data: { confirm: 'Are you sure?' }, method: :delete
+              i.fa.fa-trash>
+              | Slett
 
 = render 'layouts/table_navigation', table_id: table_id, target: :loans

@@ -12,16 +12,34 @@
         img.mb-3.col-12 src=image_customer_path(@customer)
       = f.file_field :image, accept: 'image/*', capture: 'camera'
 
-      input type="file" accept="image/*" capture="camera" id="camera"
-      img id="frame"
-      javascript:
-          var camera = document.getElementById('camera');
-          var frame = document.getElementById('frame');
 
-          camera.addEventListener('change', function (e) {
-              var file = e.target.files[0];
-              // Do something with the image file.
-              frame.src = URL.createObjectURL(file);
+
+      canvas id="canvas" width="160" height="120"
+      video id="video" width="160" height="120" autoplay='autoplay'
+      button id="snap" type="button" Snap Photo
+
+      javascript:
+          // Grab elements, create settings, etc.
+          var video = document.getElementById('video');
+
+          // Get access to the camera!
+          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+              // Not adding `{ audio: true }` since we only want video now
+              navigator.mediaDevices.getUserMedia({video: true}).then(function (stream) {
+                  video.src = window.URL.createObjectURL(stream);
+                  video.play();
+              });
+          }
+
+          // Elements for taking the snapshot
+          var canvas = document.getElementById('canvas');
+          var context = canvas.getContext('2d');
+          var video = document.getElementById('video');
+
+          // Trigger photo take
+          document.getElementById("snap").addEventListener("click", function () {
+              context.drawImage(video, 0, 0, 160, 120);
           });
+
 
   .float-right = f.primary 'Lagre'
