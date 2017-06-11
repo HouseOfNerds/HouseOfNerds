@@ -4,7 +4,7 @@ class AdministratorsController < ApplicationController
   before_action :set_administrator, only: %i[show edit update destroy]
 
   def index
-    @administrators = Administrator.all
+    @administrators = Administrator.order(:email).all
   end
 
   def show

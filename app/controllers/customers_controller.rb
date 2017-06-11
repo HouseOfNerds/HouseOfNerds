@@ -4,11 +4,11 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: %i[show edit image update destroy]
 
   def index
-    @customers = Customer.all
+    @customers = Customer.order(:email).all
   end
 
   def show
-    edit
+    @asset_types = AssetType.order(:name).all
   end
 
   def image
@@ -37,7 +37,7 @@ class CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
-      redirect_to customers_path, notice: 'Customer was successfully updated.'
+      redirect_to customer_path(@customer), notice: 'Customer was successfully updated.'
     else
       render :edit
     end

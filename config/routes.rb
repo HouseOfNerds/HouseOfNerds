@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   get 'search' => 'search#index'
 
   resources :administrators
+  resources :asset_types
   resources :customers do
     member { get :image }
+  end
+  resources :loans do
+    member { get :return }
   end
 
   root to: 'customers#index'

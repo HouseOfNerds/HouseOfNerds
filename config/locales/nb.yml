@@ -1,8 +1,11 @@
 nb:
   attributes:
     address: Adresse
+    asset_type_id: Utstyrstype
     birthdate: Fødselsdato
+    customer_id: Kunde
     email: E-post
     name: Navn
     phone: Telefon
     postal_code: Postnummer
+    returned_at: Returnert

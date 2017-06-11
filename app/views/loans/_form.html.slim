@@ -1,0 +1,10 @@
+= bootstrap_form_for @loan do |f|
+  .row
+    .col-sm
+      = f.collection_select :customer_id, @customers, :id, :email, prompt: 'Velg kunde'
+    .col-sm
+      = f.collection_select :asset_type_id, @asset_types, :id, :name, prompt: 'Velg utstyrstype'
+    - unless @loan.new_record?
+      .col-sm
+        = f.text_field :returned_at, class: :datetime
+  .float-right = f.primary 'Lagre'

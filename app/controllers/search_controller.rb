@@ -10,5 +10,6 @@ class SearchController < ApplicationController
             query: db_query)
         .order(updated_at: :desc)
         .distinct.to_a
+    redirect_to @customers[0] if @customers.size == 1
   end
 end

@@ -1,25 +1,40 @@
-p#notice = notice
+.row
+  .col-md-6
+    h1 Kunde #{@customer.email}
+    h2 = @customer.name
+    table.table
+      tr
+        th Telefon
+        td = @customer.phone
+      tr
+        th Adresse
+        td = @customer.address
+      tr
+        th Postnummer
+        td = @customer.postal_code
+      tr
+        th Fødselsdato
+        td = @customer.birthdate
 
-p
-  strong Email:
-  = @customer.email
-p
-  strong Name:
-  = @customer.name
-p
-  strong Password digest:
-  = @customer.password_digest
-p
-  strong Phone:
-  = @customer.phone
-p
-  strong Address:
-  = @customer.address
-p
-  strong Postal code:
-  = @customer.postal_code
-p
-  strong Birthdate:
-  = @customer.birthdate
+    .float-right = link_to 'Endre', edit_customer_path(@customer), class: 'btn btn-link'
 
-= link_to 'Endre', edit_customer_path(@customer)
+  .col-md-6
+    h1 Utlån
+
+    table.table
+      tr
+        th Utstyr
+        th style='width: 10rem' Retur
+      - @customer.loans.today_or_outstanding.each do |loan|
+        tr
+          td = loan.asset_type.name
+          td.text-right
+            - if loan.returned_at
+              = loan.returned_at.strftime('%F %R')
+            - else
+              = link_to 'Returner', return_loan_path(loan), class: 'btn btn-danger'
+
+    = bootstrap_form_for :loan, url: loans_path do |f|
+      = f.hidden_field :customer_id, value: @customer.id
+      = f.collection_select :asset_type_id, @asset_types, :id, :name, prompt: 'Velg utstyrstype'
+      .float-right = f.primary 'Lagre'

@@ -1,0 +1,20 @@
+= link_to new_asset_type_path, class: 'btn btn-primary float-right'
+  i.fa.fa-plus>
+  | Ny utstyrstype
+
+h1 Utstyrstyper
+
+.table-responsive
+  table#asset_types.table.table-striped.table-hover
+    thead
+      tr
+        th Name
+        th
+
+    tbody
+      - @asset_types.each do |asset_type|
+        tr data-record-id=asset_type.id
+          td = asset_type.name
+          td.text-right = link_to 'Slett', asset_type, data: { confirm: 'Are you sure?' }, method: :delete
+
+= render 'layouts/table_navigation', target: :asset_types

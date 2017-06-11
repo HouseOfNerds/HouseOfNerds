@@ -15,8 +15,6 @@ h1 Administratorer
         th Postnummer
         th Fødselsdato
         th
-        th
-        th
 
     tbody
       - @administrators.each do |administrator|
@@ -27,8 +25,6 @@ h1 Administratorer
           td = administrator.address
           td = administrator.postal_code
           td = administrator.birthdate
-          td = link_to 'Show', administrator
-          td = link_to 'Edit', edit_administrator_path(administrator)
           td = link_to 'Destroy', administrator, data: { confirm: 'Are you sure?' }, method: :delete
 
 javascript:

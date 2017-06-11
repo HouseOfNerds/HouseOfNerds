@@ -1,0 +1,38 @@
+= link_to new_loan_path, class: 'btn btn-primary float-right'
+  i.fa.fa-plus>
+  | Nytt utlån
+
+h1 Utlån
+
+ul.nav.nav-tabs role="tablist"
+  li.nav-item
+    a.nav-link.active data-toggle="tab" href="#outstanding" role="tab" Utlevert
+  li.nav-item
+    a.nav-link data-toggle="tab" href="#returned" role="tab" Innlevert
+  li.nav-item
+    a.nav-link data-toggle="tab" href="#yesterday" role="tab" I går
+
+.tab-content
+  #outstanding.tab-pane.active role="tabpanel"
+    .table-responsive
+      table#loans.table.table-striped.table-hover
+        thead
+          tr
+            th Kunde
+            th Utstyrstype
+            th Registrert
+            th Returnert
+            th
+
+        tbody
+          - @loans.each do |loan|
+            tr data-record-id=loan.id
+              td = link_to loan.customer.email, loan.customer
+              td = loan.asset_type.name
+              td = loan.created_at.localtime.strftime('%F %R')
+              td = loan.returned_at&.localtime&.strftime('%F %R')
+              td.text-right = link_to 'Destroy', loan, data: { confirm: 'Are you sure?' }, method: :delete
+  #returned.tab-pane role="tabpanel"
+  #yesterday.tab-pane role="tabpanel"
+
+= render 'layouts/table_navigation', target: :loans
