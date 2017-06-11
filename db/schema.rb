@@ -39,14 +39,14 @@ ActiveRecord::Schema.define(version: 20170610222040) do
   end
 
   create_table 'customers', force: :cascade do |t|
-    t.string 'email', null: false
-    t.string 'name'
-    t.string 'phone'
-    t.string 'address'
-    t.string 'postal_code'
+    t.string 'email', limit: 128, null: false
+    t.string 'name', limit: 64
+    t.string 'phone', limit: 32
+    t.string 'address', limit: 64
+    t.string 'postal_code', limit: 10
     t.date 'birthdate'
     t.binary 'image_content'
-    t.binary 'image_content_type'
+    t.string 'image_content_type', limit: 64
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
@@ -60,18 +60,6 @@ ActiveRecord::Schema.define(version: 20170610222040) do
     t.datetime 'updated_at', null: false
     t.index ['asset_type_id'], name: 'index_loans_on_asset_type_id'
     t.index ['customer_id'], name: 'index_loans_on_customer_id'
-  end
-
-  create_table 'users', force: :cascade do |t|
-    t.string 'email'
-    t.string 'name'
-    t.string 'password_digest'
-    t.string 'phone'
-    t.string 'address'
-    t.string 'postal_code'
-    t.date 'birthdate'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
   end
 
   add_foreign_key 'loans', 'asset_types'

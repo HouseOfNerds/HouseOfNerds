@@ -3,14 +3,14 @@
 class CreateCustomers < ActiveRecord::Migration[5.1]
   def change
     create_table :customers do |t|
-      t.string :email, null: false
-      t.string :name
-      t.string :phone
-      t.string :address
-      t.string :postal_code
+      t.string :email, null: false, limit: 128
+      t.string :name, limit: 64
+      t.string :phone, limit: 32
+      t.string :address, limit: 64
+      t.string :postal_code, limit: 10
       t.date :birthdate
       t.binary :image_content
-      t.binary :image_content_type
+      t.string :image_content_type, limit: 64
 
       t.timestamps
     end
