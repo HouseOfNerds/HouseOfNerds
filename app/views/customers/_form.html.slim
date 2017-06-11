@@ -11,4 +11,17 @@
       - if @customer.image_content
         img.mb-3.col-12 src=image_customer_path(@customer)
       = f.file_field :image, accept: 'image/*', capture: 'camera'
+
+      input type="file" accept="image/*" capture="camera" id="camera"
+      img id="frame"
+      javascript:
+          var camera = document.getElementById('camera');
+          var frame = document.getElementById('frame');
+
+          camera.addEventListener('change', function (e) {
+              var file = e.target.files[0];
+              // Do something with the image file.
+              frame.src = URL.createObjectURL(file);
+          });
+
   .float-right = f.primary 'Lagre'
