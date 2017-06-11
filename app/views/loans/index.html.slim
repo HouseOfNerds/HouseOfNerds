@@ -14,25 +14,8 @@ ul.nav.nav-tabs role="tablist"
 
 .tab-content
   #outstanding.tab-pane.active role="tabpanel"
-    .table-responsive
-      table#loans.table.table-striped.table-hover
-        thead
-          tr
-            th Kunde
-            th Utstyrstype
-            th Registrert
-            th Returnert
-            th
-
-        tbody
-          - @loans.each do |loan|
-            tr data-record-id=loan.id
-              td = link_to loan.customer.email, loan.customer
-              td = loan.asset_type.name
-              td = loan.created_at.localtime.strftime('%F %R')
-              td = loan.returned_at&.localtime&.strftime('%F %R')
-              td.text-right = link_to 'Destroy', loan, data: { confirm: 'Are you sure?' }, method: :delete
+    = render 'list', loans: @outstanding_loans, table_id: :outstanding_loans
   #returned.tab-pane role="tabpanel"
+    = render 'list', loans: @returned_loans, table_id: :outstanding_loans
   #yesterday.tab-pane role="tabpanel"
-
-= render 'layouts/table_navigation', target: :loans
+    = render 'list', loans: @loans_yesterday, table_id: :outstanding_loans

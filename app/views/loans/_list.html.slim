@@ -1,0 +1,23 @@
+- show_returned_column = loans.any?(&:returned_at)
+.table-responsive
+  table.table.table-striped.table-hover id=table_id
+    thead
+      tr
+        th Kunde
+        th Utstyrstype
+        th Registrert
+        - if show_returned_column
+          th Returnert
+        th
+
+    tbody
+      - loans.each do |loan|
+        tr data-record-id=loan.id
+          td = link_to loan.customer.email, loan.customer
+          td = loan.asset_type.name
+          td = loan.created_at.localtime.strftime('%F %R')
+          - if show_returned_column
+            td = loan.returned_at&.localtime&.strftime('%F %R')
+          td.text-right = link_to 'Destroy', loan, data: { confirm: 'Are you sure?' }, method: :delete
+
+= render 'layouts/table_navigation', table_id: table_id, target: :loans

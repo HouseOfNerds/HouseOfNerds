@@ -1,5 +1,5 @@
 javascript:
-    $('##{target} tbody tr').css('cursor', 'pointer').on("click", function (e) {
+    $('##{table_id} tbody tr').css('cursor', 'pointer').on("click", function (e) {
         if ($(e.target).closest("a").length > 0) {
             return true;
         }

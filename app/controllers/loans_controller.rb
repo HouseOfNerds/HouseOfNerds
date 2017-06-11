@@ -4,7 +4,11 @@ class LoansController < ApplicationController
   before_action :set_loan, only: %i[show edit update return destroy]
 
   def index
-    @loans = Loan.all
+    loan_query = Loan.includes(:customer, :asset_type)
+    loan_query_today = loan_query.today
+    @outstanding_loans = loan_query_today.outstanding.all
+    @returned_loans = loan_query_today.returned.all
+    @loans_yesterday = loan_query.yesterday.all
   end
 
   def show

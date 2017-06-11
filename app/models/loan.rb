@@ -6,6 +6,12 @@ class Loan < ApplicationRecord
 
   validates :customer_id, :asset_type_id, presence: true
 
-  scope :today_or_outstanding, -> { where('created_at >= :today OR returned_at IS NULL', today: Time.zone.now.beginning_of_day) }
-  # Event.where('start_at >= ? and start_at <= ?', Time.zone.now, Time.zone.now.end_of_day)
+  scope :today, -> { where('created_at >= :today', today: Time.zone.now.beginning_of_day) }
+  scope :yesterday, -> {
+    where('created_at >= :yesterday AND created_at < :today',
+        yesterday: Time.zone.now.beginning_of_day - 1.day, today: Time.zone.now.beginning_of_day)
+  }
+  scope :outstanding, -> { where(returned_at: nil) }
+  scope :returned, -> { where.not(returned_at: nil) }
+  scope :today_or_outstanding, -> { today.or(outstanding) }
 end

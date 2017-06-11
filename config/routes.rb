@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     member { get :return }
   end
 
-  root to: 'customers#index'
+  root to: 'loans#index'
 end

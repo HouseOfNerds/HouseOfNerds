@@ -17,4 +17,4 @@ h1 Utstyrstyper
           td = asset_type.name
           td.text-right = link_to 'Slett', asset_type, data: { confirm: 'Are you sure?' }, method: :delete
 
-= render 'layouts/table_navigation', target: :asset_types
+= render 'layouts/table_navigation', table_id: :asset_types, target: :asset_types
