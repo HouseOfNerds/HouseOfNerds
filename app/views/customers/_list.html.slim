@@ -8,7 +8,6 @@
         th Adresse
         th Postnummer
         th Fødselsdato
-        th
 
     tbody
       - customers.each do |customer|
@@ -19,10 +18,6 @@
           td = customer.address
           td = customer.postal_code
           td = customer.birthdate
-          td
-            = link_to customer, data: { confirm: 'Are you sure?' }, method: :delete
-              i.fa.fa-trash>
-              | Slett
 
 javascript:
     $('#customers tbody tr').css('cursor', 'pointer').on("click", function (e) {

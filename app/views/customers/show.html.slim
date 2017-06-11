@@ -1,25 +1,31 @@
 .row
   .col-md-6
+    .float-right = link_to 'Endre', edit_customer_path(@customer), class: 'btn btn-secondary'
+
     h1 Kunde #{@customer.email}
     h2 = @customer.name
 
-    = render 'image'
+    .row
+      .col-md-5
+        - if @customer.image_content_type
+          img.mb-3.w-100 src=image_customer_path(@customer)
+        - else
+          = render 'image'
 
-    table.table.mb-0
-      tr
-        th Telefon
-        td = @customer.phone
-      tr
-        th Adresse
-        td = @customer.address
-      tr
-        th Postnummer
-        td = @customer.postal_code
-      tr
-        th Fødselsdato
-        td = @customer.birthdate
-
-    .float-right = link_to 'Endre', edit_customer_path(@customer), class: 'btn btn-link'
+      .col-md-7
+        table.table.mb-0
+          tr
+            th Telefon
+            td = @customer.phone
+          tr
+            th Adresse
+            td = @customer.address
+          tr
+            th Postnummer
+            td = @customer.postal_code
+          tr
+            th Fødselsdato
+            td = @customer.birthdate
 
   .col-md-6
     h1 Utlån

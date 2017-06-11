@@ -5,4 +5,8 @@
   = f.text_field :address
   = f.text_field :postal_code
   = f.text_field :birthdate, class: :date
-  .float-right = f.primary 'Lagre'
+  .float-right
+    = f.primary 'Lagre'
+  = link_to @customer, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger mr-2'
+    i.fa.fa-trash>
+    | Slett
