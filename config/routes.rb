@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       post :save_image
     end
   end
+  resources :departments
   resources :loans do
     member { get :return }
   end

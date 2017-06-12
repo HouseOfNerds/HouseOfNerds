@@ -14,7 +14,7 @@ h1 Administratorer
         th Adresse
         th Postnummer
         th Fødselsdato
-        th
+        th Avdeling
 
     tbody
       - @administrators.each do |administrator|
@@ -25,15 +25,6 @@ h1 Administratorer
           td = administrator.address
           td = administrator.postal_code
           td = administrator.birthdate
-          td = link_to administrator, data: { confirm: 'Are you sure?' }, method: :delete
-            i.fa.fa-trash>
-            | Slett
+          td = administrator.department.name
 
-javascript:
-    $('#administrators tbody tr').css('cursor', 'pointer').on("click", function (e) {
-        if ($(e.target).closest("a").length > 0) {
-            return true;
-        }
-        const record_id = $(this).attr('data-record-id');
-        window.location = '/administrators/' + record_id;
-    });
+= render 'layouts/table_navigation', table_id: :administrators, target: :administrators

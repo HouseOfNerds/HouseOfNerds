@@ -5,6 +5,8 @@ nb:
     asset_type_id: Utstyrstype
     birthdate: Fødselsdato
     customer_id: Kunde
+    department_id: Avdeling
+    domain: Domene
     email: E-post
     name: Navn
     phone: Telefon

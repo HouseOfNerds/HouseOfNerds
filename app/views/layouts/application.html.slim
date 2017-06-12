@@ -22,7 +22,6 @@ html lang="en"
               li.nav-item: a.nav-link href=loans_path Utlån
               li.nav-item: a.nav-link href=customers_path Kunder
               li.nav-item: a.nav-link href=asset_types_path Utstyr
-              li.nav-item: a.nav-link href=administrators_path Administratorer
             form.form-inline.my-2.my-lg-0.mr-2 action=search_path
               input.form-control.mr-sm-2 name='q' type="text" placeholder="Søk"
               button.btn.btn-outline-success.my-2.my-sm-0 type="submit" Søk
@@ -31,6 +30,13 @@ html lang="en"
                 | Logg av
                 br
                 text-sm = current_user.email
+              li.nav-item.dropdown.text-nowrap
+                a#navbarDropdownMenuLink.nav-link.dropdown-toggle href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                  i.fa.fa-cog
+                .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
+                  a.dropdown-item href=administrators_path Administratorer
+                  a.dropdown-item href=departments_path Avdelinger
+
       - if alert
         #alert.alert.alert-warning.alert-dismissible.fade.show role="alert"
           button.close type="button" data-dismiss="alert" aria-label="Close"

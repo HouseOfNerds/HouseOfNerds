@@ -19,11 +19,4 @@
           td = customer.postal_code
           td = customer.birthdate
 
-javascript:
-    $('#customers tbody tr').css('cursor', 'pointer').on("click", function (e) {
-        if ($(e.target).closest("a").length > 0) {
-            return true;
-        }
-        const record_id = $(this).attr('data-record-id');
-        window.location = '/customers/' + record_id;
-    });
+= render 'layouts/table_navigation', table_id: :customers, target: :customers

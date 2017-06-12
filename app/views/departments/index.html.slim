@@ -1,0 +1,20 @@
+= link_to new_department_path, class: 'btn btn-primary float-right'
+  i.fa.fa-plus>
+  | Ny avdeling
+
+h1 Avdelinger
+
+.table-responsive
+  table#departments.table.table-striped.table-hover
+    thead
+      tr
+        th Navn
+        th Domene
+
+    tbody
+      - @departments.each do |department|
+        tr data-record-id=department.id
+          td = department.name
+          td = department.domain
+
+= render 'layouts/table_navigation', table_id: :departments, target: :departments

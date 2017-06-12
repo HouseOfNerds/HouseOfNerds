@@ -12,10 +12,13 @@ class AdministratorsController < ApplicationController
   end
 
   def new
-    @administrator = Administrator.new
+    @administrator ||= Administrator.new
+    load_form_data
+    render :new
   end
 
   def edit
+    load_form_data
     render :edit
   end
 
@@ -23,9 +26,9 @@ class AdministratorsController < ApplicationController
     @administrator = Administrator.new(administrator_params)
 
     if @administrator.save
-      redirect_to administrators_path, notice: 'Administrator was successfully created.'
+      redirect_to administrators_path, notice: 'Opprettet en ny administrator.'
     else
-      render :new
+      new
     end
   end
 
@@ -51,6 +54,11 @@ class AdministratorsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def administrator_params
-    params.require(:administrator).permit(:email, :name, :password_digest, :phone, :address, :postal_code, :birthdate)
+    params.require(:administrator).permit(:address, :birthdate, :department_id, :email, :name,
+        :password_digest, :phone, :postal_code)
+  end
+
+  def load_form_data
+    @departments = Department.order(:name).to_a
   end
 end

@@ -20,7 +20,11 @@ class AdministratorsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create administrator' do
     assert_difference('Administrator.count') do
-      post administrators_url, params: { administrator: { address: @administrator.address, birthdate: @administrator.birthdate, email: @administrator.email, name: @administrator.name, phone: @administrator.phone, postal_code: @administrator.postal_code } }
+      post administrators_url, params: { administrator: {
+          address: @administrator.address, birthdate: @administrator.birthdate,
+          email: @administrator.email, name: @administrator.name, phone: @administrator.phone,
+          postal_code: @administrator.postal_code, department_id: ActiveRecord::FixtureSet.identify(:oslo)
+      } }
     end
 
     assert_redirected_to administrators_url

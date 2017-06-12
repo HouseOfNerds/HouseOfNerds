@@ -1,11 +1,5 @@
 = bootstrap_form_for @administrator do |f|
-  - if @administrator.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@administrator.errors.count, "error")} prohibited this administrator from being saved:"
-      ul
-        - @administrator.errors.full_messages.each do |message|
-          li = message
-
+  = f.collection_select :department_id, @departments, :id, :name, prompt: 'Velg avdeling'
   = f.text_field :email
   = f.text_field :name
   = f.text_field :phone
