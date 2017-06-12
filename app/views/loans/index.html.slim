@@ -14,8 +14,8 @@ ul.nav.nav-tabs role="tablist"
 
 .tab-content
   #outstanding.tab-pane.active role="tabpanel"
-    = render 'list', loans: @outstanding_loans, table_id: :outstanding_loans
+    = render 'list_by_customer', loans: @outstanding_loans, table_id: :outstanding_loans
   #returned.tab-pane role="tabpanel"
-    = render 'list', loans: @returned_loans, table_id: :outstanding_loans
+    = render 'list_by_customer', loans: @returned_loans, table_id: :outstanding_loans
   #yesterday.tab-pane role="tabpanel"
-    = render 'list', loans: @loans_yesterday, table_id: :outstanding_loans
+    = render 'list_by_customer', loans: @loans_yesterday, table_id: :outstanding_loans

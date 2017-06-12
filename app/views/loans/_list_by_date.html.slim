@@ -1,0 +1,19 @@
+- show_returned_column = loans.any?(&:returned_at)
+.table-responsive
+  table.table.table-striped.table-hover id=table_id
+    thead
+      tr
+        th Kunde
+        th Utstyrstype
+        th Registrert
+        - if show_returned_column
+          th Returnert
+
+    tbody
+      - loans.group_by{|c| c.created_at.to_date}.each do |date, loans|
+        tr
+          td = date
+          td = loans.map(&:asset_type).map(&:name).join(', ')
+          td = loans.first.created_at.localtime.strftime('%F %R')
+          - if show_returned_column
+            td = loans.last.returned_at&.localtime&.strftime('%F %R')
