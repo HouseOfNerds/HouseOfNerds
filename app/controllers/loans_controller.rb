@@ -51,7 +51,7 @@ class LoansController < ApplicationController
 
   def destroy
     @loan.destroy
-    redirect_to loans_url, notice: 'Loan was successfully destroyed.'
+    redirect_to @loan.customer, notice: 'Slettet utlånet.'
   end
 
   private
