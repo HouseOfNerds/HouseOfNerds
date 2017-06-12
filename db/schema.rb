@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170612190238) do
     t.string 'name', limit: 64, null: false
     t.string 'phone', limit: 32
     t.string 'address', limit: 64, null: false
-    t.string 'postal_code', limit: 10
+    t.string 'postal_code', limit: 10, null: false
     t.date 'birthdate', null: false
     t.binary 'image_content'
     t.string 'image_content_type', limit: 64

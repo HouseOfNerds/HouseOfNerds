@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
         "er allerede i bruk: <a href='/search?q=#{data[:value]}'>#{data[:value]}</a>"
       end,
   }
-  validates :address, :birthdate, :name, presence: true
+  validates :address, :birthdate, :name, :postal_code, presence: true
 
   def image=(file)
     # self.filename = file.original_filename
