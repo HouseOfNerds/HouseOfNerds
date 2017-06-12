@@ -36,7 +36,6 @@
         tr
           th Utstyr
           th.text-center Retur
-          th
       tbody
         - @customer.loans.today_or_outstanding.each do |loan|
           tr
@@ -46,8 +45,7 @@
                 = loan.returned_at.strftime('%F %R')
               - else
                 = link_to 'Returner', return_loan_path(loan), class: 'btn btn-success', title: 'Returner'
-            td.text-right
-              = link_to loan, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
+              = link_to loan, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger ml-2', title: :Slett
                 i.fa.fa-trash>
 
     = bootstrap_form_for :loan, url: loans_path do |f|
