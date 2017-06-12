@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612190238) do
+ActiveRecord::Schema.define(version: 20170612212239) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170612190238) do
     t.string 'image_content_type', limit: 64
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.boolean 'parental_approval'
     t.index ['email'], name: 'index_customers_on_email'
     t.index ['phone'], name: 'index_customers_on_phone'
   end
