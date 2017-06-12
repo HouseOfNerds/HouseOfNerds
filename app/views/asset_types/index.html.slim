@@ -9,14 +9,10 @@ h1 Utstyrstyper
     thead
       tr
         th Name
-        th
 
     tbody
       - @asset_types.each do |asset_type|
         tr data-record-id=asset_type.id
           td = asset_type.name
-          td.text-right = link_to asset_type, data: { confirm: 'Are you sure?' }, method: :delete
-            i.fa.fa-trash>
-            | Slett
 
 = render 'layouts/table_navigation', table_id: :asset_types, target: :asset_types

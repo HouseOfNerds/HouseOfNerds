@@ -8,19 +8,14 @@
         th Registrert
         - if show_returned_column
           th Returnert
-        th
 
     tbody
-      - loans.each do |loan|
-        tr data-record-id=loan.id
-          td = link_to loan.customer.email, loan.customer
-          td = loan.asset_type.name
-          td = loan.created_at.localtime.strftime('%F %R')
+      - loans.group_by(&:customer).each do |customer, loans|
+        tr data-record-id=customer.id
+          td = customer.email
+          td = loans.map(&:asset_type).map(&:name).join(', ')
+          td = loans.first.created_at.localtime.strftime('%F %R')
           - if show_returned_column
-            td = loan.returned_at&.localtime&.strftime('%F %R')
-          td.text-right
-            = link_to loan, data: { confirm: 'Are you sure?' }, method: :delete
-              i.fa.fa-trash>
-              | Slett
+            td = loans.last.returned_at&.localtime&.strftime('%F %R')
 
-= render 'layouts/table_navigation', table_id: table_id, target: :loans
+= render 'layouts/table_navigation', table_id: table_id, target: :customers
