@@ -9,6 +9,7 @@ nb:
     domain: Domene
     email: E-post
     name: Navn
+    parental_approval: Foreldregodkjenning
     phone: Telefon
     postal_code: Postnummer
     returned_at: Returnert
