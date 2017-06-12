@@ -9,6 +9,7 @@ class CustomersController < ApplicationController
 
   def show
     @asset_types = AssetType.order(:name).all
+    @loan_history = @customer.loans.older.to_a
   end
 
   def image

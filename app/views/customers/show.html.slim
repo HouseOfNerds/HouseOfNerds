@@ -53,3 +53,6 @@
     = bootstrap_form_for :loan, url: loans_path do |f|
       = f.hidden_field :customer_id, value: @customer.id
       = f.select :asset_type_id, @asset_types.map{|at| [at.name, at.id]}, prompt: 'Velg utstyrstype', append: f.primary('Legg til'), hide_label: true
+
+- if @loan_history.present?
+  = render 'loans/list', loans: @loan_history, table_id: :loan_history

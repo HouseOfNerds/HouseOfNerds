@@ -14,4 +14,7 @@ class Loan < ApplicationRecord
   scope :outstanding, -> { where(returned_at: nil) }
   scope :returned, -> { where.not(returned_at: nil) }
   scope :today_or_outstanding, -> { today.or(outstanding) }
+  scope :older, -> {
+    where('created_at < :today', today: Time.zone.now.beginning_of_day)
+  }
 end
