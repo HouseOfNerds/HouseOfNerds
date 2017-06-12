@@ -1,6 +1,6 @@
 one:
   email: one@example.com
-  name: MyString
+  name: One Onseson
   phone: 11111111
   address: MyString
   postal_code: MyString
@@ -8,7 +8,7 @@ one:
 
 two:
   email: two@example.com
-  name: MyString
+  name: Two Twoson
   phone: 22222222
   address: MyString
   postal_code: MyString

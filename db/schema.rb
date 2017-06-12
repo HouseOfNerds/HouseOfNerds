@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612064037) do
+ActiveRecord::Schema.define(version: 20170612121844) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170612064037) do
 
   create_table 'customers', force: :cascade do |t|
     t.string 'email', limit: 128, null: false
-    t.string 'name', limit: 64
+    t.string 'name', limit: 64, null: false
     t.string 'phone', limit: 32
     t.string 'address', limit: 64
     t.string 'postal_code', limit: 10

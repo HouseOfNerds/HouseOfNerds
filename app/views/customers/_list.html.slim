@@ -2,8 +2,8 @@
   table#customers.table.table-striped.table-hover
     thead
       tr
-        th E-post
         th Navn
+        th E-post
         th Telefon
         th Adresse
         th Postnummer
@@ -12,8 +12,8 @@
     tbody
       - customers.each do |customer|
         tr data-record-id=customer.id
-          td = customer.email
           td = customer.name
+          td = customer.email
           td = customer.phone
           td = customer.address
           td = customer.postal_code

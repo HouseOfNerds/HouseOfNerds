@@ -4,6 +4,7 @@
     thead
       tr
         th Kunde
+        th E-post
         th Utstyrstype
         th Registrert
         - if show_returned_column
@@ -12,6 +13,7 @@
     tbody
       - loans.group_by(&:customer).each do |customer, loans|
         tr data-record-id=customer.id
+          td = customer.name
           td = customer.email
           td = loans.map(&:asset_type).map(&:name).join(', ')
           td = loans.first.created_at.localtime.strftime('%F %R')

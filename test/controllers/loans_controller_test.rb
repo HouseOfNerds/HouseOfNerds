@@ -46,6 +46,6 @@ class LoansControllerTest < ActionDispatch::IntegrationTest
       delete loan_url(@loan)
     end
 
-    assert_redirected_to loans_url
+    assert_redirected_to @loan.customer
   end
 end
