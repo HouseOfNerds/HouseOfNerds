@@ -49,7 +49,6 @@
             td.text-right
               = link_to loan, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger'
                 i.fa.fa-trash>
-                | Slett
 
     = bootstrap_form_for :loan, url: loans_path do |f|
       = f.hidden_field :customer_id, value: @customer.id

@@ -18,10 +18,8 @@ html lang="en"
             span.navbar-toggler-icon
           #navbarSupportedContent.collapse.navbar-collapse
             ul.navbar-nav.mr-auto
-              li.nav-item.active: a.nav-link href=root_path Startside
               li.nav-item: a.nav-link href=loans_path Utlån
               li.nav-item: a.nav-link href=customers_path Kunder
-              li.nav-item: a.nav-link href=asset_types_path Utstyr
             form.form-inline.my-2.my-lg-0.mr-2 action=search_path
               input.form-control.mr-sm-2 name='q' type="text" placeholder="Søk"
               button.btn.btn-outline-success.my-2.my-sm-0 type="submit" Søk
@@ -34,6 +32,7 @@ html lang="en"
                 a#navbarDropdownMenuLink.nav-link.dropdown-toggle href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                   i.fa.fa-cog
                 .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
+                  a.dropdown-item href=asset_types_path Utstyr
                   a.dropdown-item href=administrators_path Administratorer
                   a.dropdown-item href=departments_path Avdelinger
 
