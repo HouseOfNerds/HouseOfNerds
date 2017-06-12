@@ -5,7 +5,12 @@ class Customer < ApplicationRecord
 
   before_validation { self.email = email.downcase.strip if email_changed? }
 
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, uniqueness: {
+      case_sensitive: false,
+      message: ->(_, data) do
+        "er allerede i bruk: <a href='/search?q=#{data[:value]}'>#{data[:value]}</a>"
+      end,
+  }
   validates :address, :birthdate, :name, presence: true
 
   def image=(file)
