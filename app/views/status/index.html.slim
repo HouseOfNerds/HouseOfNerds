@@ -17,6 +17,7 @@ h5 Time: #{Time.now.strftime('%F %R')}
         th E-post
         th Utstyrstype
         th Registrert
+        th Registrert
         - if show_returned_column
           th Returnert
 
@@ -26,7 +27,8 @@ h5 Time: #{Time.now.strftime('%F %R')}
           td = customer.name
           td = customer.email
           td = loans.map(&:asset_type).map(&:name).join(', ')
-          td = loans.first.created_at.localtime.strftime('%F %R')
+          td = loans.first.created_at
+          td = loans.first.created_at.inspect
           - if show_returned_column
             td = loans.last.returned_at&.localtime&.strftime('%F %R')
 
