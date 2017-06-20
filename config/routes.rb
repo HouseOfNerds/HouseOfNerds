@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post 'login', to: 'login#send_email'
   get 'logout', to: 'login#logout', as: :logout
   get 'search' => 'search#index'
+  get 'status' => 'status#index'
 
   resources :administrators
   resources :asset_types
