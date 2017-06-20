@@ -2,5 +2,32 @@ h1 Status
 
 h2 Time: #{Time.current}
 h3 Time: #{Time.now}
-h4 Time: #{Time.current.strftime('%R %F')}
-h5 Time: #{Time.now.strftime('%R %F')}
+h4 Time: #{Time.current.strftime('%F %R')}
+h5 Time: #{Time.now.strftime('%F %R')}
+
+- loans = Loan.all
+- table_id = :loans
+
+- show_returned_column = loans.any?(&:returned_at)
+.table-responsive
+  table.table.table-striped.table-hover id=table_id
+    thead
+      tr
+        th Kunde
+        th E-post
+        th Utstyrstype
+        th Registrert
+        - if show_returned_column
+          th Returnert
+
+    tbody
+      - loans.group_by(&:customer).each do |customer, loans|
+        tr data-record-id=customer.id
+          td = customer.name
+          td = customer.email
+          td = loans.map(&:asset_type).map(&:name).join(', ')
+          td = loans.first.created_at.localtime.strftime('%F %R')
+          - if show_returned_column
+            td = loans.last.returned_at&.localtime&.strftime('%F %R')
+
+= render 'layouts/table_navigation', table_id: table_id, target: :customers
