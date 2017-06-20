@@ -5,7 +5,7 @@ h3 Time: #{Time.now}
 h4 Time: #{Time.current.strftime('%F %R')}
 h5 Time: #{Time.now.strftime('%F %R')}
 
-- loans = Loan.all
+- loans = Loan.order(created_at: :desc).all
 - table_id = :loans
 
 - show_returned_column = loans.any?(&:returned_at)
