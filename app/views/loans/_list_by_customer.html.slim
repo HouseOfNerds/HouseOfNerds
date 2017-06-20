@@ -16,8 +16,8 @@
           td = customer.name
           td = customer.email
           td = loans.map(&:asset_type).map(&:name).join(', ')
-          td = loans.first.created_at.localtime.strftime('%F %R')
+          td = loans.first.created_at.strftime('%F %R')
           - if show_returned_column
-            td = loans.last.returned_at&.localtime&.strftime('%F %R')
+            td = loans.last.returned_at&.strftime('%F %R')
 
 = render 'layouts/table_navigation', table_id: table_id, target: :customers
