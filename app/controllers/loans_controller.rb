@@ -6,8 +6,8 @@ class LoansController < ApplicationController
   def index
     loan_query = Loan.includes(:customer, :asset_type)
     loan_query_today = loan_query.today
-    @outstanding_loans = loan_query.outstanding.all
-    @returned_loans = loan_query_today.returned.all
+    @outstanding_loans = loan_query.outstanding.order(:created_at).all
+    @returned_loans = loan_query_today.returned.order(returned_at: :desc).all
     @loans_yesterday = loan_query.yesterday.all
   end
 
