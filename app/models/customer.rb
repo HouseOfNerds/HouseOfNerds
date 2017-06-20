@@ -3,6 +3,8 @@
 class Customer < ApplicationRecord
   has_many :loans, dependent: :destroy
 
+  scope :without_images, -> { select(column_names - ['image_content']) }
+
   before_validation { self.email = email.downcase.strip if email_changed? }
 
   validates :email, presence: true, uniqueness: {

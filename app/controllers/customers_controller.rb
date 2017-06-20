@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: %i[show edit image save_image update destroy]
 
   def index
-    @customers = Customer.order(:email).all
+    @customers = Customer.without_images.order(:email).all
   end
 
   def show
