@@ -24,8 +24,9 @@ html lang="en"
                 i.fa.fa-plus>
                 | Ny kunde
             form.form-inline.my-2.my-lg-0.mr-2 action=search_path
-              input.form-control.mr-sm-2 name='q' type="text" value=params[:q] placeholder="Søk"
+              input#search.form-control.mr-sm-2 name='q' type="text" value=params[:q] placeholder="Søk"
               button.btn.btn-outline-success.my-2.my-sm-0 type="submit" Søk
+              javascript: $('#search').on('focus', function(){$(this).select()});
             ul.navbar-nav style="margin-top:-5px;margin-bottom:-5px"
               li.nav-item: a.nav-link.pr-1.py-0 href=logout_path
                 | Logg av
