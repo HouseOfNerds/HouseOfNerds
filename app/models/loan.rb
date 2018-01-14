@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Loan < ApplicationRecord
-  belongs_to :customer
+  belongs_to :customer, -> { select(:id, :email, :name) }
   belongs_to :asset_type
 
   validates :customer_id, :asset_type_id, presence: true

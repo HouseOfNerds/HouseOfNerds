@@ -4,8 +4,7 @@ class LoansController < ApplicationController
   before_action :set_loan, only: %i[show edit update return destroy]
 
   def index
-    loan_query = Loan.includes(:customer, :asset_type).references(:customers)
-        .select('loans.id, customers.id, customers.name, customers.email')
+    loan_query = Loan.includes(:customer, :asset_type)
     loan_query_today = loan_query.today
     @outstanding_loans = loan_query.outstanding.order(:created_at).all
     @returned_loans = loan_query_today.returned.order(returned_at: :desc).all
