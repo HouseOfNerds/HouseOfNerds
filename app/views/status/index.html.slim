@@ -1,7 +1,13 @@
-h1 Status
+h1 Status #{Time.current.strftime('%F %R')}
 
-h2 Time: #{Time.current}
-h3 Time: #{Time.now}
-h4 Time: #{Time.current.strftime('%F %R')}
-h5 Time: #{Time.now.strftime('%F %R')}
-h6 Time: #{Time.current.localtime.strftime('%F %R')}
+table.table
+  tbody
+    tr
+      th Customers
+      td = Customer.count
+    tr
+      th Loans
+      td = Loan.count
+    tr
+      th Administrators
+      td = Administrator.count
