@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ruby '2.4.3'
+ruby File.read('.ruby-version').chomp.sub('ruby-', '')
 
 source 'https://rubygems.org'
 
