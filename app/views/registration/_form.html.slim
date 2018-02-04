@@ -1,0 +1,11 @@
+= bootstrap_form_for @customer, url: {action: :create} do |f|
+  = f.text_field :name
+  = f.text_field :email
+  = f.text_field :phone
+  = f.text_field :address
+  = f.text_field :postal_code
+  = f.text_field :birthdate, class: :date, placeholder: 'YYYY-MM-DD'
+  - if @customer.parental_approval || (@customer.persisted? && @customer.age < 18)
+    = f.check_box :parental_approval
+  .float-right
+    = f.primary 'Lagre'

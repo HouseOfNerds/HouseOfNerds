@@ -5,6 +5,7 @@ one:
   address: MyString
   postal_code: MyString
   birthdate: 2017-06-10
+  verified: true
 
 two:
   email: two@example.com
@@ -13,3 +14,4 @@ two:
   address: MyString
   postal_code: MyString
   birthdate: 2017-06-10
+  verified: true

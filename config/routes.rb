@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'login', to: 'login#login', as: :login
   post 'login', to: 'login#send_email'
   get 'logout', to: 'login#logout', as: :logout
+  get 'registration/confirmation'
+  post 'registration/create'
+  get 'registration/new'
   get 'search' => 'search#index'
   get 'status' => 'status#index'
 

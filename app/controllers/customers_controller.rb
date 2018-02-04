@@ -36,6 +36,7 @@ class CustomersController < ApplicationController
 
   def create
     @customer = Customer.new(customer_params)
+    @customer.verified = true
 
     if @customer.save
       redirect_to @customer, notice: 'Customer was successfully created.'

@@ -1,0 +1,13 @@
+.card
+  .card-body
+    h1 Takk for registreringen din!
+
+    h4.text-center.mt-5 Du kan nå henvende deg til resepsjonen.
+
+javascript:
+  $(function(){
+      console.log('set timeout');
+      setTimeout(function(){
+          window.location = '#{registration_new_path}'
+      }, 4000);
+  });
