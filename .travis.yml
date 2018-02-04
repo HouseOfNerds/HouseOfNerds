@@ -2,5 +2,5 @@ language: ruby
 cache: bundler
 
 script:
-  - bin/rails db:setup test:full
+  - bin/rails db:setup
   - bin/rails test:full
