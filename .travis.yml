@@ -3,3 +3,4 @@ cache: bundler
 
 script:
   - bin/rails db:setup test:full
+  - cat coverage/index.html

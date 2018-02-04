@@ -12,6 +12,6 @@ if Rails.env.test?
   RuboCop::RakeTask.new
 
   namespace :test do
-    task full: ['rubocop:auto_correct', :test]
+    task full: ['rubocop:auto_correct', :test, 'test:system']
   end
 end
