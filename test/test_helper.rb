@@ -3,6 +3,7 @@
 require 'simplecov'
 SimpleCov.start 'rails' do
   minimum_coverage 85
+  add_filter '/test/'
   add_filter '/vendor/'
 end
 
