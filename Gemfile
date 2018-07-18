@@ -20,6 +20,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'mini_racer', platforms: :ruby
 gem 'momentjs-rails'
 gem 'pg', '~> 0.18'
 gem 'popper_js'
@@ -27,7 +28,6 @@ gem 'puma', '~> 3.7'
 gem 'rails-i18n'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails'
-gem 'therubyracer', platforms: :ruby
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '<4'
 
