@@ -18,7 +18,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
   config.assets.compile = false
   # config.assets.css_compressor = :sass
-  config.assets.js_compressor = :uglifier
+  config.assets.js_compressor = Uglifier.new(harmony: true)
   config.cache_classes = true
   # config.cache_store = :mem_cache_store
   config.consider_all_requests_local = false
