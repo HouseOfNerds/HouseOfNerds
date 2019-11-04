@@ -42,13 +42,14 @@
   .col-lg-6
     h1 Utlån
 
-    table.table.table-sm.table-striped
+    - today_or_outstanding = @customer.loans.today_or_outstanding
+    table.table.table-sm.table-striped class=('table-sm' if today_or_outstanding.size > 6)
       thead
         tr
           th Utstyr
           th.text-center Retur
       tbody
-        - @customer.loans.today_or_outstanding.each do |loan|
+        - today_or_outstanding.each do |loan|
           tr
             td = loan.asset_type.name
             td.text-right

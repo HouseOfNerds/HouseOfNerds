@@ -5,7 +5,7 @@
 h1 Avdelinger
 
 .table-responsive
-  table#departments.table.table-striped.table-hover
+  table#departments.table.table-striped.table-hover class=('table-sm' if @departments.size > 12)
     thead
       tr
         th Navn

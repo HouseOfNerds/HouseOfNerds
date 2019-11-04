@@ -1,6 +1,6 @@
 - show_returned_column = loans.any?(&:returned_at)
 .table-responsive
-  table.table.table-striped.table-hover id=table_id
+  table.table.table-striped.table-hover id=table_id class=('table-sm' if loans.size > 10)
     thead
       tr
         th Kunde

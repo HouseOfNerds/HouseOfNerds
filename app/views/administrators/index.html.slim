@@ -5,7 +5,7 @@
 h1 Administratorer
 
 .table-responsive
-  table#administrators.table.table-striped.table-hover
+  table#administrators.table.table-striped.table-hover class=('table-sm' if @administrators.size > 12)
     thead
       tr
         th E-post

@@ -5,7 +5,7 @@
 h1 Utstyrstyper
 
 .table-responsive
-  table#asset_types.table.table-striped.table-hover
+  table#asset_types.table.table-striped.table-hover class=('table-sm' if @asset_types.size > 12)
     thead
       tr
         th Name
