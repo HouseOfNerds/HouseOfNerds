@@ -4,17 +4,12 @@ ruby File.read('.ruby-version').chomp.sub('ruby-', '')
 
 source 'https://rubygems.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
-  "https://github.com/#{repo_name}.git"
-end
-
 gem 'rails', '~> 5.1.1'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap'
 gem 'bootstrap3-datetimepicker-rails'
-gem 'bootstrap_form', github: 'bootstrap-ruby/bootstrap_form'
+gem 'bootstrap_form'
 gem 'chosen-rails'
 gem 'coffee-rails', '~> 4.2'
 gem 'font-awesome-rails'
@@ -28,6 +23,7 @@ gem 'puma', '~> 3.7'
 gem 'rails-i18n'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails'
+gem 'sysinfo'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '<4'
 

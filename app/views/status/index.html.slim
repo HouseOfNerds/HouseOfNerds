@@ -1,13 +1,26 @@
 h1 Status #{Time.current.strftime('%F %R')}
 
+h2 Database
+
 table.table
   tbody
     tr
-      th Customers
+      th Kunder
       td = Customer.count
     tr
-      th Loans
+      th Utlån
       td = Loan.count
     tr
-      th Administrators
+      th Administratorer
       td = Administrator.count
+
+h2 Drift
+
+table.table
+  tbody
+    tr
+      th Oppetid
+      td = time_ago_in_words SysInfo.new.uptime.hours.ago
+    tr
+      th Start
+      td = SysInfo.new.uptime.hours.ago.strftime('%F %R')
