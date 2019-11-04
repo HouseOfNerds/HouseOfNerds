@@ -14,19 +14,21 @@ html lang="en"
         a.navbar-brand href=root_path
           img src=image_path('theme_amsterdam_HoN-logo-horizontal-01-blue.png')
         - if current_user
-          button.navbar-toggler.navbar-toggler-right type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+          a.btn.btn-primary href=new_customer_path
+            i.fa.fa-plus>
+            | Ny kunde
+          button.navbar-toggler.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             span.navbar-toggler-icon
           #navbarSupportedContent.collapse.navbar-collapse
             ul.navbar-nav.mr-auto
               li.nav-item: a.nav-link href=loans_path Utlån
               li.nav-item: a.nav-link href=customers_path Kunder
-              li.nav-item: a.btn.btn-primary href=new_customer_path
-                i.fa.fa-plus>
-                | Ny kunde
-            form.form-inline.my-2.my-lg-0.mr-2 action=search_path
-              input#search.form-control.mr-sm-2 name='q' type="text" value=params[:q] placeholder="Søk"
-              button.btn.btn-outline-success.my-2.my-sm-0 type="submit" Søk
-              javascript: $('#search').on('focus', function(){$(this).select()});
+            form.form-inline.my-2.my-lg-0.mx-auto action=search_path
+              .input-group
+                input#search.form-control name='q' type="text" value=params[:q] placeholder="Søk"
+                .input-group-append
+                  button.btn.btn-outline-success type="submit" Søk
+            javascript: $('#search').on('focus', function(){$(this).select()});
             ul.navbar-nav style="margin-top:-5px;margin-bottom:-5px"
               li.nav-item: a.nav-link.pr-1.py-0 href=logout_path
                 | Logg av
@@ -35,7 +37,7 @@ html lang="en"
               li.nav-item.dropdown.text-nowrap
                 a#navbarDropdownMenuLink.nav-link.dropdown-toggle href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                   i.fa.fa-cog
-                .dropdown-menu aria-labelledby="navbarDropdownMenuLink"
+                .dropdown-menu.dropdown-menu-right aria-labelledby="navbarDropdownMenuLink"
                   a.dropdown-item href=asset_types_path Utstyr
                   a.dropdown-item href=administrators_path Administratorer
                   a.dropdown-item href=departments_path Avdelinger
