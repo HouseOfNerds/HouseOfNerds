@@ -1,7 +1,5 @@
 h1 Status #{Time.current.strftime('%F %R')}
 
-h2 Database
-
 table.table
   tbody
     tr
@@ -13,14 +11,9 @@ table.table
     tr
       th Administratorer
       td = Administrator.count
-
-h2 Drift
-
-table.table
-  tbody
     tr
       th Oppetid
-      td = time_ago_in_words SysInfo.new.uptime.hours.ago
+      td = time_ago_in_words HouseOfNerds::BOOTED_AT
     tr
       th Start
-      td = SysInfo.new.uptime.hours.ago.strftime('%F %R')
+      td = HouseOfNerds::BOOTED_AT.strftime('%F %R')

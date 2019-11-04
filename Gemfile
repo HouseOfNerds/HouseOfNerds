@@ -24,7 +24,6 @@ gem 'puma', '~> 3.7'
 gem 'rails-i18n'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails'
-gem 'sysinfo'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '<4'
 
