@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
+  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
-  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
   # config.action_controller.asset_host = 'http://assets.example.com'
   config.action_controller.perform_caching = true
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
@@ -12,8 +12,9 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   # config.action_mailer.raise_delivery_errors = false
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "HouseOfNerds_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "house_of_nerds_#{Rails.env}"
   config.active_record.dump_schema_after_migration = false
+  config.active_storage.service = :local
   config.active_support.deprecation = :notify
   config.assets.compile = false
   # config.assets.css_compressor = :sass
@@ -27,8 +28,9 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.log_level = :debug
   config.log_tags = [:request_id]
+  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
-  config.read_encrypted_secrets = true
+  # config.require_master_key = true
 
   ActionMailer::Base.smtp_settings = {
       user_name: ENV['SENDGRID_USERNAME'],

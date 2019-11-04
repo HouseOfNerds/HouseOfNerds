@@ -4,9 +4,10 @@ ruby File.read('.ruby-version').chomp.sub('ruby-', '')
 
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.1'
+gem 'rails', '~> 5.2.3'
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootsnap'
 gem 'bootstrap'
 gem 'bootstrap3-datetimepicker-rails'
 gem 'bootstrap_form'
