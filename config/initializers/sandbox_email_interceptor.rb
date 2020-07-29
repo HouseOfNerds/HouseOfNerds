@@ -1,3 +1,6 @@
 # frozen_string_literal: true
 
-ActionMailer::Base.register_interceptor(SandboxEmailInterceptor) unless Rails.env.production?
+unless Rails.env.production?
+  require 'sandbox_email_interceptor'
+  ActionMailer::Base.register_interceptor(SandboxEmailInterceptor)
+end
